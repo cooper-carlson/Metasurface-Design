@@ -1,0 +1,131 @@
+[02:35:18] queue: starting 05_twofin_eta_control/SingleLayer_ComplexPB_v6a_pinwheel_robust.ipynb
+[02:35:19] start SingleLayer_ComplexPB_v6a_pinwheel_robust.ipynb
+Device: cuda | u = Modulation(parameter='aniso', amplitude=0.12) 
+ {'wavelength': 0.633, 'period': 0.4, 'n_fin': 3.88, 'k_fin': 0.019, 'n_background': 1.0, 'n_bottom': 1.46, 'n_top': 1.0, 'height': 0.25, 'cell_margin': 0.012}
+bottom         n=1.460 first order propagating=False
+top            n=1.000 first order propagating=False
+background     n=1.000 first order propagating=False
+fin_reference  n=3.880 first order propagating=True
+[02:35:22] cell 1 done
+[02:35:22] cell 3 done
+Warm start from results/complex_pb_v5_pinwheel/complex_pb_checkpoint.npz
+Screen 8/64 | valid 6
+Screen 16/64 | valid 12
+Screen 24/64 | valid 18
+Screen 32/64 | valid 24
+Screen 40/64 | valid 30
+Screen 48/64 | valid 36
+Screen 56/64 | valid 42
+Screen 64/64 | valid 48
+Screen seconds: 584.5
+score -0.321 | Im γ span=2.860 rad, Re γ rms=0.251, locality rms=0.769, nonlinearity=0.578, P≥0.00, η∈[0.00,0.66], gap≥0.29
+score -0.319 | Im γ span=0.476 rad, Re γ rms=0.132, locality rms=0.261, nonlinearity=0.053, P≥0.49, η∈[0.19,0.31], gap≥1.16
+score -0.170 | Im γ span=0.209 rad, Re γ rms=0.027, locality rms=0.137, nonlinearity=0.028, P≥0.40, η∈[0.01,0.11], gap≥0.63
+score -0.160 | Im γ span=0.876 rad, Re γ rms=0.026, locality rms=0.571, nonlinearity=0.251, P≥0.33, η∈[0.01,0.34], gap≥0.15
+score -0.136 | Im γ span=0.172 rad, Re γ rms=0.034, locality rms=0.129, nonlinearity=0.029, P≥0.36, η∈[0.01,0.04], gap≥0.28
+score -0.127 | Im γ span=0.564 rad, Re γ rms=0.145, locality rms=0.454, nonlinearity=0.065, P≥0.40, η∈[0.64,0.73], gap≥0.09
+[02:45:07] cell 5 done
+
+>>> Candidate 1/3
+C0 coarse   1/50: loss=+6.660 | Im γ span=0.708 rad, Re γ rms=1.455, locality rms=1.466, nonlinearity=0.237, P≥0.01, η∈[0.00,0.57], gap≥0.20
+C0 coarse  10/50: loss=+1.184 | Im γ span=0.998 rad, Re γ rms=0.429, locality rms=0.974, nonlinearity=0.211, P≥0.18, η∈[0.04,0.30], gap≥0.08
+C0 coarse  20/50: loss=+1.441 | Im γ span=1.162 rad, Re γ rms=0.819, locality rms=0.936, nonlinearity=0.262, P≥0.13, η∈[0.02,0.40], gap≥0.08
+C0 coarse  30/50: loss=+0.385 | Im γ span=0.539 rad, Re γ rms=0.238, locality rms=0.637, nonlinearity=0.109, P≥0.19, η∈[0.02,0.15], gap≥0.21
+C0 coarse  40/50: loss=-0.248 | Im γ span=0.268 rad, Re γ rms=0.106, locality rms=0.055, nonlinearity=0.039, P≥0.28, η∈[0.03,0.07], gap≥0.36
+C0 coarse  50/50: loss=+0.320 | Im γ span=0.829 rad, Re γ rms=0.624, locality rms=0.599, nonlinearity=0.172, P≥0.25, η∈[0.03,0.27], gap≥0.08
+C0 refine   1/20: loss=-0.052 | Im γ span=0.262 rad, Re γ rms=0.087, locality rms=0.292, nonlinearity=0.033, P≥0.21, η∈[0.03,0.07], gap≥0.46
+C0 refine  10/20: loss=-0.096 | Im γ span=1.007 rad, Re γ rms=0.735, locality rms=0.347, nonlinearity=0.209, P≥0.15, η∈[0.02,0.34], gap≥0.09
+C0 refine  20/20: loss=+0.320 | Im γ span=0.767 rad, Re γ rms=1.001, locality rms=0.140, nonlinearity=0.172, P≥0.24, η∈[0.03,0.33], gap≥0.05
+   ACCEPT coarse it  26: Im γ span=0.840 rad, Re γ rms=0.366, locality rms=0.050, nonlinearity=0.171, P≥0.15, η∈[0.02,0.25], gap≥0.14 | accepted=False
+   ACCEPT coarse it  40: Im γ span=0.418 rad, Re γ rms=0.173, locality rms=0.037, nonlinearity=0.052, P≥0.21, η∈[0.02,0.11], gap≥0.27 | accepted=False
+   ACCEPT coarse it  49: Im γ span=0.440 rad, Re γ rms=0.182, locality rms=0.041, nonlinearity=0.053, P≥0.19, η∈[0.02,0.12], gap≥0.28 | accepted=False
+   ACCEPT refine it  13: Im γ span=0.499 rad, Re γ rms=0.177, locality rms=0.032, nonlinearity=0.074, P≥0.17, η∈[0.02,0.14], gap≥0.26 | accepted=False
+   ACCEPT refine it   5: Im γ span=0.848 rad, Re γ rms=0.361, locality rms=0.046, nonlinearity=0.170, P≥0.14, η∈[0.02,0.25], gap≥0.15 | accepted=False
+   ACCEPT refine it  19: Im γ span=0.509 rad, Re γ rms=0.185, locality rms=0.033, nonlinearity=0.080, P≥0.19, η∈[0.02,0.14], gap≥0.23 | accepted=False
+
+>>> Candidate 2/3
+C1 coarse   1/50: loss=-0.444 | Im γ span=0.526 rad, Re γ rms=0.119, locality rms=0.176, nonlinearity=0.079, P≥0.49, η∈[0.19,0.31], gap≥1.16
+C1 coarse  10/50: loss=-0.746 | Im γ span=1.293 rad, Re γ rms=0.113, locality rms=0.441, nonlinearity=0.381, P≥0.40, η∈[0.17,0.61], gap≥0.94
+C1 coarse  20/50: loss=-0.894 | Im γ span=1.762 rad, Re γ rms=0.122, locality rms=0.594, nonlinearity=0.384, P≥0.35, η∈[0.17,0.75], gap≥0.74
+C1 coarse  30/50: loss=-0.204 | Im γ span=0.346 rad, Re γ rms=0.031, locality rms=0.265, nonlinearity=0.031, P≥0.53, η∈[0.09,0.36], gap≥1.19
+C1 coarse  40/50: loss=-0.839 | Im γ span=1.151 rad, Re γ rms=0.149, locality rms=0.379, nonlinearity=0.040, P≥0.36, η∈[0.18,0.61], gap≥0.96
+C1 coarse  50/50: loss=+1.184 | Im γ span=0.919 rad, Re γ rms=0.399, locality rms=0.892, nonlinearity=0.273, P≥0.14, η∈[0.14,0.47], gap≥0.89
+C1 refine   1/20: loss=+3.644 | Im γ span=1.444 rad, Re γ rms=0.171, locality rms=1.588, nonlinearity=0.136, P≥0.33, η∈[0.22,0.69], gap≥0.84
+C1 refine  10/20: loss=+0.707 | Im γ span=2.281 rad, Re γ rms=0.812, locality rms=0.906, nonlinearity=0.818, P≥0.24, η∈[0.23,0.85], gap≥0.57
+C1 refine  20/20: loss=+0.475 | Im γ span=1.338 rad, Re γ rms=0.627, locality rms=0.834, nonlinearity=0.169, P≥0.33, η∈[0.14,0.83], gap≥0.59
+   ACCEPT coarse it  14: Im γ span=1.804 rad, Re γ rms=0.124, locality rms=0.536, nonlinearity=0.342, P≥0.32, η∈[0.16,0.76], gap≥0.74 | accepted=False
+   ACCEPT coarse it  11: Im γ span=1.319 rad, Re γ rms=0.102, locality rms=0.408, nonlinearity=0.343, P≥0.38, η∈[0.14,0.63], gap≥0.91 | accepted=False
+   ACCEPT coarse it  49: Im γ span=1.037 rad, Re γ rms=0.430, locality rms=0.575, nonlinearity=0.247, P≥0.14, η∈[0.21,0.55], gap≥0.85 | accepted=False
+   ACCEPT refine it   1: Im γ span=2.266 rad, Re γ rms=0.346, locality rms=0.732, nonlinearity=0.301, P≥0.28, η∈[0.18,0.86], gap≥0.55 | accepted=False
+   ACCEPT refine it  18: Im γ span=1.336 rad, Re γ rms=0.563, locality rms=0.796, nonlinearity=0.235, P≥0.31, η∈[0.10,0.78], gap≥0.67 | accepted=False
+   ACCEPT refine it  19: Im γ span=1.227 rad, Re γ rms=0.552, locality rms=0.762, nonlinearity=0.202, P≥0.33, η∈[0.10,0.81], gap≥0.62 | accepted=False
+
+>>> Candidate 3/3
+C2 coarse   1/50: loss=-0.158 | Im γ span=0.185 rad, Re γ rms=0.026, locality rms=0.113, nonlinearity=0.021, P≥0.41, η∈[0.01,0.10], gap≥0.65
+C2 coarse  10/50: loss=-0.124 | Im γ span=0.179 rad, Re γ rms=0.075, locality rms=0.156, nonlinearity=0.025, P≥0.36, η∈[0.01,0.10], gap≥0.72
+C2 coarse  20/50: loss=-0.236 | Im γ span=0.320 rad, Re γ rms=0.058, locality rms=0.200, nonlinearity=0.013, P≥0.43, η∈[0.01,0.15], gap≥0.72
+C2 coarse  30/50: loss=-0.265 | Im γ span=0.315 rad, Re γ rms=0.038, locality rms=0.152, nonlinearity=0.016, P≥0.28, η∈[0.05,0.11], gap≥0.68
+C2 coarse  40/50: loss=-0.249 | Im γ span=0.327 rad, Re γ rms=0.092, locality rms=0.185, nonlinearity=0.037, P≥0.32, η∈[0.02,0.13], gap≥0.85
+C2 coarse  50/50: loss=-0.352 | Im γ span=0.412 rad, Re γ rms=0.041, locality rms=0.169, nonlinearity=0.020, P≥0.29, η∈[0.04,0.11], gap≥0.79
+C2 refine   1/20: loss=-0.330 | Im γ span=0.403 rad, Re γ rms=0.070, locality rms=0.184, nonlinearity=0.011, P≥0.31, η∈[0.03,0.12], gap≥0.82
+C2 refine  10/20: loss=-0.152 | Im γ span=0.259 rad, Re γ rms=0.112, locality rms=0.211, nonlinearity=0.074, P≥0.31, η∈[0.03,0.13], gap≥0.90
+C2 refine  20/20: loss=-0.197 | Im γ span=0.264 rad, Re γ rms=0.055, locality rms=0.178, nonlinearity=0.012, P≥0.42, η∈[0.02,0.09], gap≥0.79
+   ACCEPT coarse it  45: Im γ span=0.408 rad, Re γ rms=0.073, locality rms=0.177, nonlinearity=0.021, P≥0.29, η∈[0.02,0.12], gap≥0.83 | accepted=True
+   ACCEPT coarse it  49: Im γ span=0.454 rad, Re γ rms=0.050, locality rms=0.183, nonlinearity=0.023, P≥0.29, η∈[0.02,0.12], gap≥0.76 | accepted=True
+   ACCEPT refine it  16: Im γ span=0.423 rad, Re γ rms=0.054, locality rms=0.174, nonlinearity=0.024, P≥0.31, η∈[0.02,0.11], gap≥0.73 | accepted=True
+   ACCEPT refine it   0: Im γ span=0.408 rad, Re γ rms=0.073, locality rms=0.177, nonlinearity=0.021, P≥0.29, η∈[0.02,0.12], gap≥0.83 | accepted=True
+   ACCEPT refine it  19: Im γ span=0.442 rad, Re γ rms=0.050, locality rms=0.177, nonlinearity=0.023, P≥0.30, η∈[0.02,0.11], gap≥0.75 | accepted=True
+Winner: candidate 2 coarse it 49 | Im γ span=0.454 rad, Re γ rms=0.050, locality rms=0.183, nonlinearity=0.023, P≥0.29, η∈[0.02,0.12], gap≥0.76
+Saved: results/complex_pb_v6a_pinwheel_robust/complex_pb_checkpoint.npz
+[04:50:28] cell 6 done
+Geometry: {'bar_length': 0.1474, 'bar_width': 0.0929, 'radius': 0.0506, 'tilt_deg': 40.2154, 'aniso': 0.326, 'height': 0.55} | connectivity: 1
+S (bottom x/y, top x/y):
+ [[-0.0902+0.1664j  0.0739+0.0139j  0.5489+0.2714j  0.1156-0.2942j]
+ [ 0.0739+0.0139j  0.1172+0.1069j  0.0774-0.3304j  0.7635-0.2824j]
+ [ 0.5489+0.2714j  0.0774-0.3304j -0.3636+0.0212j  0.1886+0.1455j]
+ [ 0.1156-0.2942j  0.7635-0.2824j  0.1886+0.1455j -0.0228+0.15j  ]]
+k̂ = [ 0.7398-0.0244j  0.0542+0.0247j -0.672 -0.0249j] | γ+ = 2.9713-0.0776j, γ- = 3.3119+0.0776j
+‖T-Tᵀ‖/‖T‖ = 6.646e-02 | reciprocity ‖S-Sᵀ‖ = 6.8e-13
+x from substrate: T=0.475 R=0.041 absorbed=0.484
+y from substrate: T=0.778 R=0.031 absorbed=0.191
+Layout: {'svg': 'results/complex_pb_v6a_pinwheel_robust/complex_pb_mask.svg', 'gds': 'results/complex_pb_v6a_pinwheel_robust/complex_pb_mask.gds'}
+[04:50:34] cell 8 done
+order  8: k_y(u=-1,0,1) = +0.0281-0.0337i, +0.0530+0.0226i, +0.0673+0.0952i
+order 10: k_y(u=-1,0,1) = +0.0268-0.0342i, +0.0554+0.0248i, +0.0532+0.1065i
+order 12: k_y(u=-1,0,1) = +0.0268-0.0360i, +0.0542+0.0247i, +0.0490+0.1086i
+order 14: k_y(u=-1,0,1) = +0.0285-0.0361i, +0.0546+0.0253i, +0.0459+0.1097i
+order 16: k_y(u=-1,0,1) = +0.0283-0.0355i, +0.0543+0.0249i, +0.0446+0.1103i
+raster 192: k_y(u=-1,0,1) = +0.0288-0.0363i, +0.0545+0.0267i, +0.0373+0.1128i
+raster 256: k_y(u=-1,0,1) = +0.0268-0.0360i, +0.0542+0.0247i, +0.0490+0.1086i
+raster 384: k_y(u=-1,0,1) = +0.0251-0.0356i, +0.0539+0.0228i, +0.0600+0.1020i
+[04:53:39] cell 10 done
+Im γ span 0.454 rad | Re γ span 0.144 rad | P min 0.29
+[04:55:11] cell 12 done
+u=-1: Im γ over θ: mean +0.069, spread 0.087 rad
+u=+0: Im γ over θ: mean -0.024, spread 0.116 rad
+u=+1: Im γ over θ: mean -0.168, spread 0.349 rad
+Period sweep (geometry fixed), k_y at u=0:
+  period 360 nm: Im γ = +0.103, Re γ = 2.885, P = 0.63
+  period 380 nm: Im γ = -0.038, Re γ = 2.920, P = 0.67
+  period 400 nm: Im γ = -0.084, Re γ = 2.967, P = 0.63
+  period 420 nm: Im γ = -0.160, Re γ = 2.975, P = 0.50
+  period 440 nm: Im γ = -0.119, Re γ = 3.176, P = 0.36
+[04:56:27] cell 14 done
+u=-1 N=24: Wilson γ = [ 3.137-0.144j -3.138-0.28j ] | formula γ± = 3.052+0.108j, 3.231-0.108j
+u=-1 N=48: Wilson γ = [ 3.137-0.038j -3.137-0.174j] | formula γ± = 3.052+0.108j, 3.231-0.108j
+u=+0 N=24: Wilson γ = [ 3.057-0.24j  -3.052-0.202j] | formula γ± = 2.967-0.084j, 3.316+0.084j
+u=+0 N=48: Wilson γ = [ 3.056-0.129j -3.054-0.092j] | formula γ± = 2.967-0.084j, 3.316+0.084j
+u=+1 N=24: Wilson γ = [ 3.058-0.368j -3.055-0.072j] | formula γ± = 3.012-0.352j, 3.271+0.352j
+u=+1 N=48: Wilson γ = [ 3.057-0.257j -3.055+0.038j] | formula γ± = 3.012-0.352j, 3.271+0.352j
+[05:05:03] cell 16 done
+bar_length    dImγ/dp =   -12.985   dReγ/dp =    -6.585   (per unit of the parameter: µm, degree or fraction)
+bar_width     dImγ/dp =   -49.501   dReγ/dp =   +23.268   (per unit of the parameter: µm, degree or fraction)
+radius        dImγ/dp =   -39.702   dReγ/dp =   +56.608   (per unit of the parameter: µm, degree or fraction)
+tilt_deg      dImγ/dp =    +0.006   dReγ/dp =    -0.012   (per unit of the parameter: µm, degree or fraction)
+aniso         dImγ/dp =    -0.979   dReγ/dp =    -0.766   (per unit of the parameter: µm, degree or fraction)
+height        dImγ/dp =   -13.393   dReγ/dp =    +0.179   (per unit of the parameter: µm, degree or fraction)
+Im γ span under fabrication perturbations: [0.301 0.139 0.404 0.147 0.089 0.465 0.184 0.24 ]
+[05:06:29] cell 18 done
+Saved under /home/coopah/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/results/complex_pb_v6a_pinwheel_robust
+[05:06:29] cell 20 done
+[05:06:31] FINISHED OK

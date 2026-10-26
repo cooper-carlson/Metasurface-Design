@@ -1,0 +1,180 @@
+[20:19:47] start TwoFin_Eta_Control_and_SingleLayer_Array.ipynb
+Device: cuda  |  Training parameter: bend_deg | +/- modulation: 12.0
+Single layer: {'wavelength': 0.633, 'period': 0.4, 'n_fin': 2.584, 'n_background': 1.46, 'n_bottom': 1.46, 'n_top': 1.46, 'height': 0.633, 'cell_margin': 0.012}
+[20:19:50] cell 2 done
+Prior geometry from twofin_eta_checkpoint.npz added to screening seeds.
+Prior geometry from twofin_eta_checkpoint_v2.npz added to screening seeds.
+All design variables: {'length1': (0.12, 0.27), 'width1': (0.045, 0.11), 'length2': (0.12, 0.27), 'width2': (0.045, 0.11), 'bend_deg': (35.0, 155.0), 'junction_frac': (-0.23, 0.23)}
+[20:19:50] cell 4 done
+[20:19:50] cell 6 done
+Screen 8/64 | valid 7
+Screen 16/64 | valid 15
+Screen 24/64 | valid 20
+Screen 32/64 | valid 26
+Screen 40/64 | valid 33
+Screen 48/64 | valid 39
+Screen 56/64 | valid 46
+Screen 64/64 | valid 52
+Screen seconds: 112.7
+score -0.4812 | eta-=0.025 eta+=0.590 | Δη=0.565 gap≥0.370 | anis≥0.292
+score -0.3697 | eta-=0.013 eta+=0.405 | Δη=0.391 gap≥0.265 | anis≥0.199
+score -0.3601 | eta-=0.001 eta+=0.469 | Δη=0.468 gap≥0.390 | anis≥0.276
+score -0.2178 | eta-=0.013 eta+=0.391 | Δη=0.378 gap≥0.337 | anis≥0.278
+score -0.1532 | eta-=0.000 eta+=0.301 | Δη=0.301 gap≥0.335 | anis≥0.259
+[20:21:43] cell 8 done
+Higher-order shortlist:
+ 0: -0.5423, Δη=0.594, min gap=0.366, min anis=0.293
+ 1: -0.4359, Δη=0.468, min gap=0.238, min anis=0.188
+ 2: -0.3763, Δη=0.462, min gap=0.387, min anis=0.273
+[20:22:24] cell 9 done
+
+>>> Candidate 1/3
+C0 coarse   1/60: loss=-0.5423, Δη=0.594, dη/du=+0.001, gap≥0.366, anis≥0.293, P≥0.613, Δφ_conv=0.454 rad
+C0 coarse  10/60: loss=-0.5259, Δη=0.604, dη/du=+0.003, gap≥0.424, anis≥0.300, P≥0.515, Δφ_conv=0.558 rad
+C0 coarse  20/60: loss=-0.6844, Δη=0.739, dη/du=+0.007, gap≥0.377, anis≥0.307, P≥0.548, Δφ_conv=0.465 rad
+C0 coarse  30/60: loss=-0.6823, Δη=0.738, dη/du=+0.006, gap≥0.334, anis≥0.313, P≥0.598, Δφ_conv=0.470 rad
+C0 coarse  40/60: loss=-0.7865, Δη=0.828, dη/du=+0.001, gap≥0.285, anis≥0.319, P≥0.569, Δφ_conv=0.407 rad
+C0 coarse  50/60: loss=-0.5450, Δη=0.668, dη/du=-0.010, gap≥0.460, anis≥0.326, P≥0.500, Δφ_conv=0.701 rad
+C0 coarse  60/60: loss=-0.7210, Δη=0.814, dη/du=-0.015, gap≥0.346, anis≥0.328, P≥0.535, Δφ_conv=0.608 rad
+C0 refine   1/30: loss=-0.8095, Δη=0.852, dη/du=-0.011, gap≥0.264, anis≥0.325, P≥0.564, Δφ_conv=0.411 rad
+C0 refine  10/30: loss=-0.7014, Δη=0.806, dη/du=-0.018, gap≥0.367, anis≥0.329, P≥0.530, Δφ_conv=0.648 rad
+C0 refine  20/30: loss=-0.8528, Δη=0.899, dη/du=-0.014, gap≥0.223, anis≥0.334, P≥0.561, Δφ_conv=0.428 rad
+C0 refine  30/30: loss=-0.6763, Δη=0.848, dη/du=-0.008, gap≥0.312, anis≥0.345, P≥0.522, Δφ_conv=0.828 rad
+   ACCEPT coarse it  55: train Δη=0.847 -> Δη=0.786, gap≥0.377, |conv|≥0.064, Δφ=0.660 rad, accepted=True
+   ACCEPT coarse it  47: train Δη=0.839 -> Δη=0.768, gap≥0.386, |conv|≥0.068, Δφ=0.636 rad, accepted=True
+   ACCEPT coarse it  39: train Δη=0.828 -> Δη=0.774, gap≥0.372, |conv|≥0.064, Δφ=0.616 rad, accepted=True
+   ACCEPT coarse it  52: train Δη=0.825 -> Δη=0.825, gap≥0.314, |conv|≥0.047, Δφ=0.577 rad, accepted=False
+   ACCEPT coarse it  59: train Δη=0.814 -> Δη=0.642, gap≥0.466, |conv|≥0.139, Δφ=0.742 rad, accepted=True
+   ACCEPT refine it  27: train Δη=0.934 -> Δη=0.692, gap≥0.493, |conv|≥0.107, Δφ=0.841 rad, accepted=True
+   ACCEPT refine it  23: train Δη=0.926 -> Δη=0.711, gap≥0.486, |conv|≥0.100, Δφ=0.817 rad, accepted=True
+   ACCEPT refine it  20: train Δη=0.909 -> Δη=0.759, gap≥0.442, |conv|≥0.080, Δφ=0.781 rad, accepted=True
+   ACCEPT refine it  19: train Δη=0.899 -> Δη=0.784, gap≥0.406, |conv|≥0.070, Δφ=0.760 rad, accepted=True
+   ACCEPT refine it  29: train Δη=0.848 -> Δη=0.529, gap≥0.499, |conv|≥0.206, Δφ=0.789 rad, accepted=True
+
+>>> Candidate 2/3
+C1 coarse   1/60: loss=-0.4359, Δη=0.468, dη/du=+0.234, gap≥0.238, anis≥0.188, P≥0.754, Δφ_conv=0.357 rad
+C1 coarse  10/60: loss=-0.5498, Δη=0.623, dη/du=+0.305, gap≥0.199, anis≥0.181, P≥0.737, Δφ_conv=0.540 rad
+C1 coarse  20/60: loss=-0.5740, Δη=0.637, dη/du=+0.302, gap≥0.195, anis≥0.183, P≥0.741, Δφ_conv=0.503 rad
+C1 coarse  30/60: loss=-0.5918, Δη=0.647, dη/du=+0.308, gap≥0.201, anis≥0.190, P≥0.734, Δφ_conv=0.468 rad
+C1 coarse  40/60: loss=-0.6125, Δη=0.662, dη/du=+0.323, gap≥0.208, anis≥0.198, P≥0.721, Δφ_conv=0.445 rad
+C1 coarse  50/60: loss=-0.6778, Δη=0.726, dη/du=+0.363, gap≥0.211, anis≥0.214, P≥0.698, Δφ_conv=0.438 rad
+C1 coarse  60/60: loss=-0.7376, Δη=0.766, dη/du=+0.383, gap≥0.223, anis≥0.233, P≥0.671, Δφ_conv=0.338 rad
+C1 refine   1/30: loss=-0.5354, Δη=0.733, dη/du=+0.366, gap≥0.268, anis≥0.226, P≥0.628, Δφ_conv=0.888 rad
+C1 refine  10/30: loss=-0.7310, Δη=0.789, dη/du=+0.394, gap≥0.212, anis≥0.229, P≥0.665, Δφ_conv=0.481 rad
+C1 refine  20/30: loss=-0.7415, Δη=0.788, dη/du=+0.394, gap≥0.213, anis≥0.232, P≥0.667, Δφ_conv=0.433 rad
+C1 refine  30/30: loss=-0.7517, Δη=0.790, dη/du=+0.395, gap≥0.215, anis≥0.238, P≥0.666, Δφ_conv=0.391 rad
+   ACCEPT coarse it  58: train Δη=0.781 -> Δη=0.550, gap≥0.255, |conv|≥0.081, Δφ=0.978 rad, accepted=True
+   ACCEPT coarse it  59: train Δη=0.766 -> Δη=0.523, gap≥0.263, |conv|≥0.087, Δφ=1.000 rad, accepted=True
+   ACCEPT coarse it  56: train Δη=0.774 -> Δη=0.530, gap≥0.254, |conv|≥0.084, Δφ=0.998 rad, accepted=True
+   ACCEPT coarse it  57: train Δη=0.790 -> Δη=0.551, gap≥0.252, |conv|≥0.081, Δφ=0.981 rad, accepted=True
+   ACCEPT refine it  29: train Δη=0.790 -> Δη=0.739, gap≥0.286, |conv|≥0.060, Δφ=0.885 rad, accepted=True
+   ACCEPT refine it  28: train Δη=0.791 -> Δη=0.728, gap≥0.288, |conv|≥0.064, Δφ=0.901 rad, accepted=True
+   ACCEPT refine it  27: train Δη=0.794 -> Δη=0.707, gap≥0.286, |conv|≥0.070, Δφ=0.927 rad, accepted=True
+   ACCEPT refine it  26: train Δη=0.792 -> Δη=0.706, gap≥0.286, |conv|≥0.071, Δφ=0.926 rad, accepted=True
+
+>>> Candidate 3/3
+C2 coarse   1/60: loss=-0.3763, Δη=0.462, dη/du=-0.005, gap≥0.387, anis≥0.273, P≥0.619, Δφ_conv=0.584 rad
+C2 coarse  10/60: loss=-0.6041, Δη=0.642, dη/du=-0.007, gap≥0.414, anis≥0.294, P≥0.567, Δφ_conv=0.390 rad
+C2 coarse  20/60: loss=-0.6592, Δη=0.865, dη/du=+0.070, gap≥0.251, anis≥0.353, P≥0.540, Δφ_conv=0.907 rad
+C2 coarse  30/60: loss=-0.5757, Δη=0.697, dη/du=+0.024, gap≥0.379, anis≥0.346, P≥0.600, Δφ_conv=0.698 rad
+C2 coarse  40/60: loss=-0.6561, Δη=0.753, dη/du=-0.009, gap≥0.332, anis≥0.333, P≥0.597, Δφ_conv=0.622 rad
+C2 coarse  50/60: loss=-0.6594, Δη=0.757, dη/du=+0.008, gap≥0.415, anis≥0.333, P≥0.527, Δφ_conv=0.625 rad
+C2 refine   1/30: loss=-0.8558, Δη=0.892, dη/du=+0.046, gap≥0.203, anis≥0.334, P≥0.546, Δφ_conv=0.379 rad
+C2 refine  10/30: loss=-0.8842, Δη=0.919, dη/du=+0.058, gap≥0.160, anis≥0.338, P≥0.540, Δφ_conv=0.372 rad
+C2 refine  20/30: loss=-0.9057, Δη=0.948, dη/du=+0.069, gap≥0.091, anis≥0.343, P≥0.534, Δφ_conv=0.413 rad
+C2 refine  30/30: loss=-0.7295, Δη=0.886, dη/du=+0.064, gap≥0.229, anis≥0.342, P≥0.521, Δφ_conv=0.790 rad
+   ACCEPT coarse it  16: train Δη=0.896 -> Δη=0.725, gap≥0.468, |conv|≥0.085, Δφ=0.805 rad, accepted=True
+   ACCEPT coarse it  36: train Δη=0.877 -> Δη=0.746, gap≥0.463, |conv|≥0.088, Δφ=0.722 rad, accepted=True
+   ACCEPT coarse it  15: train Δη=0.858 -> Δη=0.722, gap≥0.449, |conv|≥0.083, Δφ=0.713 rad, accepted=True
+   ACCEPT coarse it  33: train Δη=0.876 -> Δη=0.650, gap≥0.487, |conv|≥0.128, Δφ=0.782 rad, accepted=True
+   ACCEPT coarse it  56: train Δη=0.837 -> Δη=0.799, gap≥0.364, |conv|≥0.062, Δφ=0.603 rad, accepted=True
+   ACCEPT refine it  21: train Δη=0.950 -> Δη=0.675, gap≥0.478, |conv|≥0.111, Δφ=0.885 rad, accepted=True
+   ACCEPT refine it  19: train Δη=0.948 -> Δη=0.673, gap≥0.477, |conv|≥0.112, Δφ=0.876 rad, accepted=True
+   ACCEPT refine it  16: train Δη=0.933 -> Δη=0.695, gap≥0.475, |conv|≥0.100, Δφ=0.866 rad, accepted=True
+   ACCEPT refine it  14: train Δη=0.926 -> Δη=0.705, gap≥0.475, |conv|≥0.095, Δφ=0.862 rad, accepted=True
+   ACCEPT refine it  29: train Δη=0.886 -> Δη=0.614, gap≥0.478, |conv|≥0.144, Δφ=0.837 rad, accepted=True
+Winner: candidate 2 coarse it 56 | ACCEPT Δη=0.799, loss=-0.7085
+Saved: results/twofin_eta_transport/twofin_eta_checkpoint_v3.npz
+[21:24:16] cell 10 done
+Physical parameters: {'length1': 0.15752692867676765, 'width1': 0.06738258952054155, 'length2': 0.2587544452516357, 'width2': 0.08086714271278195, 'bend_deg': 88.03871919486221, 'junction_frac': 0.15155616056611002}
+Geometric connectedness: True; overlap area: 5452.2 nm²
+[21:24:17] cell 12 done
+S (bottom x/y, top x/y):
+ [[ 0.1013+0.0778j  0.2242+0.0819j -0.1272-0.89j    0.322 +0.1216j]
+ [ 0.2242+0.0819j -0.1436-0.0311j  0.322 +0.1216j  0.6947-0.566j ]
+ [-0.1272-0.89j    0.322 +0.1216j  0.1013+0.0778j  0.2242+0.0819j]
+ [ 0.322 +0.1216j  0.6947-0.566j   0.2242+0.0819j -0.1436-0.0311j]]
+T eigenvalues: [-0.23832084-0.93051021j  0.80579667-0.52547466j]
+Right eigenpolarizations (Stokes S2,S3,S1): [array([-0.6146,  0.0069,  0.7888]), array([ 0.6146,  0.0069, -0.7888])]
+η direct: 0.006923450046654396 η formula: 0.006923450047374342 defined: True
+Unitary Frobenius error: 1.3906091299644107e-10
+Reciprocity Frobenius error: 1.927670368195779e-11
+Forward x/y transmitted powers: [0.92669413 0.92144397]
+Forward x/y reflected powers: [0.07330587 0.07855603]
+Layout: {'svg': 'results/twofin_eta_transport/twofin_connected_mask.svg', 'gds': 'results/twofin_eta_transport/twofin_connected_mask.gds'}
+[21:24:22] cell 14 done
+bottom         n=1.460, first-order cutoff λ=584.0 nm, propagating=False, evanescent 1/e length=165.0 nm
+top            n=1.460, first-order cutoff λ=584.0 nm, propagating=False, evanescent 1/e length=165.0 nm
+background     n=1.460, first-order cutoff λ=584.0 nm, propagating=False, evanescent 1/e length=165.0 nm
+fin_reference  n=2.584, first-order cutoff λ=1033.6 nm, propagating=True, evanescent 1/e length=inf nm
+Exterior 4x4 S contains all propagating channels: True
+Independent random-matrix η identity, maximum absolute error: 2.670259846571099e-13
+Exact scalar T has a uniquely defined eigenpolarization pair: False
+[21:24:22] cell 16 done
+order 8: dη/du=+0.0044; η=[0.028 0.029 0.037], min gap=0.478, min anis=0.338, min P=0.734, direct-analytic η err<=1.8e-13
+order 10: dη/du=+0.0043; η=[0.027 0.012 0.036], min gap=0.469, min anis=0.332, min P=0.736, direct-analytic η err<=4.1e-13
+order 12: dη/du=+0.0042; η=[0.028 0.007 0.036], min gap=0.471, min anis=0.334, min P=0.736, direct-analytic η err<=7.2e-13
+order 14: dη/du=+0.0026; η=[0.028 0.005 0.033], min gap=0.472, min anis=0.334, min P=0.736, direct-analytic η err<=1.1e-12
+order 16: dη/du=+0.0033; η=[0.028 0.006 0.035], min gap=0.472, min anis=0.334, min P=0.736, direct-analytic η err<=8.6e-13
+Solver cross-check at order 12, raster 256, η at u=-1,0,+1:
+  NV area-fraction       [0.0278 0.0069 0.0363]
+  NV supersampled        [0.0274 0.0214 0.0363]
+  NV binary              [0.0306 0.0461 0.0428]
+  Laurent area-fraction  [0.0298 0.822  0.0217]
+[21:27:47] cell 18 done
+C4 order 8: relative Jones error 1.225e-09; |η90-η0| 3.782e-10
+C4 order 16: relative Jones error 1.603e-09; |η90-η0| 5.194e-10
+order=16 raster=128: η=[0.0248 0.0579 0.0297] endpoint slope=+0.0025
+order=16 raster=192: η=[0.0277 0.0006 0.0312] endpoint slope=+0.0018
+order=16 raster=256: η=[0.028  0.0059 0.0346] endpoint slope=+0.0033
+order=16 raster=384: η=[0.0291 0.0289 0.0365] endpoint slope=+0.0037
+[21:33:37] cell 20 done
+Finite-sweep η range: 0.006923450047374342 0.8062159491085228 | dη/dbend_deg near center: 0.0043540569511790654
+[21:35:10] cell 22 done
+length1         dη/dp=+36.93 (physical units), |Δη| for tested interval=0.591, η(-,+)=[0.076 0.667], gap_min=0.444
+width1          dη/dp=+45.23 (physical units), |Δη| for tested interval=0.362, η(-,+)=[0.092 0.453], gap_min=0.574
+length2         dη/dp=+42.8 (physical units), |Δη| for tested interval=0.685, η(-,+)=[0.104 0.789], gap_min=0.367
+width2          dη/dp=+34.41 (physical units), |Δη| for tested interval=0.275, η(-,+)=[0.106 0.381], gap_min=0.48
+bend_deg        dη/dp=+0.02841 (physical units), |Δη| for tested interval=0.227, η(-,+)=[0.042 0.269], gap_min=0.723
+junction_frac   dη/dp=-1.067 (physical units), |Δη| for tested interval=0.075, η(-,+)=[0.119 0.045], gap_min=0.706
+[21:36:15] cell 23 done
+dη/du over held-out perturbations: [ 0.0173  0.0254  0.0632  0.1929  0.026   0.0651  0.0242 -0.0007  0.0119
+  0.0894]
+Median |slope|: 0.025738044607576373
+Worst gap: 0.3550312952718398
+[21:38:59] cell 25 done
+[21:38:59] cell 27 done
+PB library 1/5 completed
+PB library 2/5 completed
+PB library 3/5 completed
+PB library 4/5 completed
+PB library 5/5 completed
+/tmp/ipykernel_330932/1780015510.py:31: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  for ax in axs:ax.legend(fontsize=7);ax.grid(alpha=.2)
+u=-1.0: PB residual circular RMS 0.288 rad; eta θ range [0.00449,0.202]
+u=-0.5: PB residual circular RMS 0.308 rad; eta θ range [0.0172,0.333]
+u=+0.0: PB residual circular RMS 0.611 rad; eta θ range [0.00692,0.616]
+u=+0.5: PB residual circular RMS 1.19 rad; eta θ range [0.0476,0.806]
+u=+1.0: PB residual circular RMS 0.398 rad; eta θ range [0.0331,0.59]
+[21:43:06] cell 29 done
+[21:44:56] cell 31 done
+[21:44:56] cell 33 done
+[21:44:56] cell 35 done
+Virtual Wilson phase: [0.369797-0.70511712j 0.369797-0.70511712j]
+Virtual W modulus: [0.49405071 0.49405071]
+It is NOT a phase measured by an array at normal incidence.
+Interpretation: η(u) and 2θ control are single-cell observables. Spatially arraying pixels does not in itself implement ordered transport.
+[21:44:56] cell 37 done
+Saved results under: /home/coopah/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/results/twofin_eta_transport
+[21:44:56] cell 39 done
+[21:44:58] FINISHED OK

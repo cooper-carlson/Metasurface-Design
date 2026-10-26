@@ -1,0 +1,8 @@
+# TORCWA and CUDA-enabled torch should already be installed in the workstation environment.
+# Install these only if they are missing; do not allow pip to replace your CUDA PyTorch.
+numpy
+scipy
+matplotlib
+shapely
+nbformat
+pytest

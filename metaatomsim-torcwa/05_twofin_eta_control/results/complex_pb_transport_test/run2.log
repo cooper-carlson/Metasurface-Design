@@ -1,0 +1,124 @@
+[14:37:16] start TwoFin_ComplexPB_Transport_Characterization.ipynb
+Design: {'length1': 0.1808, 'width1': 0.057, 'length2': 0.251, 'width2': 0.0564, 'bend_deg': 141.8032, 'junction_frac': -0.035}
+Physics(wavelength=0.633, period=0.4, n_fin=3.88, k_fin=0.019, n_background=1.0, n_bottom=1.46, n_top=1.0, height=0.495, cell_margin=0.012)
+[14:37:18] cell 1 done
+η=0.2: Wilson N=1024 γ± = [-3.1416+0.6363j -3.1416-0.6463j] | N→∞ (Richardson) = [-3.1416+0.6413j -3.1416-0.6413j] | Eq. 22: π ± i0.6413
+      reversed path C⁻¹ (Richardson): γ± = [-3.1416-0.6413j -3.1416+0.6413j]  (SM Eq. 29: -γ)
+η=0.5: Wilson N=1024 γ± = [3.1416+1.8074j 3.1416-1.8202j] | N→∞ (Richardson) = [3.1416+1.8137j 3.1416-1.8137j] | Eq. 22: π ± i1.8138
+      reversed path C⁻¹ (Richardson): γ± = [3.1416-1.8137j 3.1416+1.8137j]  (SM Eq. 29: -γ)
+η=0.9: Wilson N=1024 γ± = [ 3.1416+6.4613j -3.1416-6.512j ] | N→∞ (Richardson) = [ 3.1416+6.4858j -3.1416-6.4857j] | Eq. 22: π ± i6.4866
+      reversed path C⁻¹ (Richardson): γ± = [ 3.1416-6.4857j -3.1416+6.4858j]  (SM Eq. 29: -γ)
+SM Eq. 12-29 reproduced (eigenvectors, overlap, Wilson product, path reversal).
+η=0.5: Im γ+=1.8138 (SM 1.8138), G+/G-=0.000706 (SM 0.000706), C=9.54 dB (SM 9.54), A=0.8000 (SM 0.8)
+η=0.9: Im γ+=6.4866 (SM 6.487), G+/G-=5.39e-12 (SM 5.39e-12), C=25.58 dB (SM 25.58), A=0.9945 (SM 0.9945)
+SM §IX-XI reproduced.
+η=0.5: single thin K(0,η) element A_circ = 0.8000  vs  2η/(1+η²) = 0.8000
+η=0.9: single thin K(0,η) element A_circ = 0.9945  vs  2η/(1+η²) = 0.9945
+SM §XIII bilayer: E(R<-L)=0.405 (SM 0.405), E(L<-R)=0.045 (SM 0.045), A_two=0.800 (SM 0.800)
+   its rigid-rotation cycle (this work's γ = π(1∓k_y)): γ± = [3.1416+2.2214j 3.1416-2.2214j], ‖J-Jᵀ‖/‖J‖ = 0.632
+[14:37:18] cell 3 done
+K'=σz+iησy: one-cycle formula γ± = [3.1416-1.8138j 3.1416+1.8138j]
+   N=  16: stack |a(+)|/|a(-)| = [1.800e-02 5.631e+01] | lateral (local) = [1. 1.]
+   N=  64: stack |a(+)|/|a(-)| = [2.500e-02 4.061e+01] | lateral (local) = [1. 1.]
+   N= 256: stack |a(+)|/|a(-)| = [2.5000e-02 4.0092e+01] | lateral (local) = [1. 1.]
+   adiabatic prediction e^(±2 Im γ) = 37.62, 0.0266
+K(0,η)=σx+iησz: one-cycle formula γ± = [3.1416+0.j 3.1416+0.j]
+   N=  16: stack |a(+)|/|a(-)| = [1. 1.] | lateral (local) = [1. 1.]
+   N=  64: stack |a(+)|/|a(-)| = [1. 1.] | lateral (local) = [1. 1.]
+   N= 256: stack |a(+)|/|a(-)| = [1. 1.] | lateral (local) = [1. 1.]
+   adiabatic prediction e^(±2 Im γ) = 37.62, 0.0266
+[14:37:18] cell 5 done
+u=-1: η(θ=0)=0.671, ‖T-Tᵀ‖/‖T‖=0.063, formula γ± (θ=0) = [2.991+0.241j 3.292-0.241j]
+   N= 6: transport γ (forward) = [-2.982+0.555j  2.89 +1.053j] | reversed = [ 2.89 +1.053j -2.982+0.555j]
+   N=12: transport γ (forward) = [-3.019+0.149j  2.895+0.634j] | reversed = [ 2.895+0.634j -3.019+0.149j]
+   N=24: transport γ (forward) = [-2.994-0.047j  2.931+0.434j] | reversed = [ 2.931+0.434j -2.994-0.047j]
+   N→∞ (Richardson 12/24): Im γ = [-0.243  0.234]  vs one-solve formula ±0.241
+u=+1: η(θ=0)=0.028, ‖T-Tᵀ‖/‖T‖=0.013, formula γ± (θ=0) = [3.12 -0.002j 3.163+0.002j]
+   N= 6: transport γ (forward) = [-3.09 +0.871j  3.093+0.86j ] | reversed = [ 3.093+0.86j  -3.09 +0.871j]
+   N=12: transport γ (forward) = [-3.094+0.422j  3.096+0.413j] | reversed = [ 3.096+0.413j -3.094+0.422j]
+   N=24: transport γ (forward) = [-3.095+0.211j  3.096+0.202j] | reversed = [ 3.096+0.202j -3.095+0.211j]
+   N→∞ (Richardson 12/24): Im γ = [ 0.001 -0.008]  vs one-solve formula ±0.002
+u=-1: single local element (no transport) circular-conversion asymmetry A = -0.924
+u=+1: single local element (no transport) circular-conversion asymmetry A = -0.055
+[14:37:19] cell 7 done
+u=-1 N= 6: cascade |a(+)|/|a(-)| = [2.208 1.276] | adiabatic prediction = [1.646 0.608] | |λ2/λ1| = 0.41
+u=-1 N=12: cascade |a(+)|/|a(-)| = [1.686 1.405] | adiabatic prediction = [1.624 0.616] | |λ2/λ1| = 0.41
+u=-1 N=24: cascade |a(+)|/|a(-)| = [1.628 1.46 ] | adiabatic prediction = [1.618 0.618] | |λ2/λ1| = 0.41
+u=+1 N= 6: cascade |a(+)|/|a(-)| = [0.986 1.001] | adiabatic prediction = [0.99 1.01] | |λ2/λ1| = 0.80
+u=+1 N=12: cascade |a(+)|/|a(-)| = [0.991 0.981] | adiabatic prediction = [0.991 1.009] | |λ2/λ1| = 0.80
+u=+1 N=24: cascade |a(+)|/|a(-)| = [0.991 0.858] | adiabatic prediction = [0.991 1.009] | |λ2/λ1| = 0.80
+[14:37:19] cell 9 done
+u=-1 N= 6 gap 0.25 / SiO2 0.5 µm: |a(+)|/|a(-)| = [1.274 0.331] | cascade [2.208 1.276] | mean T = 5.08e-02 | A_circ(+,-) = -0.778, -0.856 | 145s
+u=-1 N= 6 gap 0.4 / SiO2 0.3 µm: |a(+)|/|a(-)| = [2.057 1.928] | cascade [2.208 1.276] | mean T = 4.10e-02 | A_circ(+,-) = -0.556, -0.825 | 141s
+u=-1 N=12 gap 0.25 / SiO2 0.5 µm: |a(+)|/|a(-)| = [1.082 0.478] | cascade [1.686 1.405] | mean T = 1.89e-04 | A_circ(+,-) = -0.812, -0.898 | 408s
+u=-1 N=12 gap 0.4 / SiO2 0.3 µm: |a(+)|/|a(-)| = [1.563 3.923] | cascade [1.686 1.405] | mean T = 1.75e-02 | A_circ(+,-) = -0.692, -0.814 | 385s
+u=+1 N= 6 gap 0.25 / SiO2 0.5 µm: |a(+)|/|a(-)| = [0.947 0.886] | cascade [0.986 1.001] | mean T = 5.82e-02 | A_circ(+,-) = -0.024, -0.035 | 137s
+u=+1 N= 6 gap 0.4 / SiO2 0.3 µm: |a(+)|/|a(-)| = [0.947 1.135] | cascade [0.986 1.001] | mean T = 7.24e-02 | A_circ(+,-) = -0.109, -0.086 | 137s
+u=+1 N=12 gap 0.25 / SiO2 0.5 µm: |a(+)|/|a(-)| = [0.879 0.992] | cascade [0.991 0.981] | mean T = 1.85e-03 | A_circ(+,-) = -0.036, -0.010 | 377s
+u=+1 N=12 gap 0.4 / SiO2 0.3 µm: |a(+)|/|a(-)| = [1.061 1.676] | cascade [0.991 0.981] | mean T = 4.74e-02 | A_circ(+,-) = -0.143, +0.014 | 377s
+[15:12:27] cell 11 done
+u=-1 orders (36, 6): zero-order |a(+)|/|a(-)| = [0.8433 0.9252] | |a(+)| = [0.4025 0.4234] vs local mean [0.4855 0.4867] | 65s
+     sense +1: order +1 R←L 0.0020 / L←R 0.0084, order -1 R←L 0.0037 / L←R 0.1631
+     sense -1: order +1 R←L 0.0018 / L←R 0.1116, order -1 R←L 0.0487 / L←R 0.0002
+     local Jones: order +1 R←L 0.0142 / L←R 0.0012, order -1 R←L 0.0015 / L←R 0.1909
+u=-1 orders (48, 6): zero-order |a(+)|/|a(-)| = [0.8472 0.9207] | |a(+)| = [0.4109 0.4188] vs local mean [0.4855 0.4867] | 137s
+     sense +1: order +1 R←L 0.0022 / L←R 0.0080, order -1 R←L 0.0030 / L←R 0.1601
+     sense -1: order +1 R←L 0.0020 / L←R 0.1072, order -1 R←L 0.0457 / L←R 0.0002
+     local Jones: order +1 R←L 0.0142 / L←R 0.0012, order -1 R←L 0.0015 / L←R 0.1909
+u=+1 orders (36, 6): zero-order |a(+)|/|a(-)| = [0.7143 1.1759] | |a(+)| = [0.1977 0.2554] vs local mean [0.2194 0.2193] | 66s
+     sense +1: order +1 R←L 0.2278 / L←R 0.0007, order -1 R←L 0.0028 / L←R 0.3121
+     sense -1: order +1 R←L 0.0014 / L←R 0.2852, order -1 R←L 0.3323 / L←R 0.0007
+     local Jones: order +1 R←L 0.4002 / L←R 0.0006, order -1 R←L 0.0009 / L←R 0.4267
+u=+1 orders (48, 6): zero-order |a(+)|/|a(-)| = [0.7084 1.182 ] | |a(+)| = [0.1936 0.2407] vs local mean [0.2194 0.2193] | 108s
+     sense +1: order +1 R←L 0.2247 / L←R 0.0007, order -1 R←L 0.0028 / L←R 0.3112
+     sense -1: order +1 R←L 0.0013 / L←R 0.2857, order -1 R←L 0.3326 / L←R 0.0006
+     local Jones: order +1 R←L 0.4002 / L←R 0.0006, order -1 R←L 0.0009 / L←R 0.4267
+[15:18:44] cell 13 done
+Eigenbranch amplitude ratio |a(C)|/|a(C⁻¹)| for the dominant branch (geometric amplitude e^{∓2 Im γ}; 1 = none):
+
+u=-1  (η=0.67, ‖T-Tᵀ‖/‖T‖=0.063, one-cycle formula Im γ± = ±0.241)
+   adiabatic prediction (N=12): 1.624
+   ideal Jones cascade (N=12):  1.686
+   full-RCWA stack N=12, gap 0.25/SiO2 0.5: 1.082
+   full-RCWA stack N=12, gap 0.4/SiO2 0.3: 1.563
+   lateral supercell N=6, orders (36, 6): 0.8433
+   lateral supercell N=6, orders (48, 6): 0.8472
+
+u=+1  (η=0.03, ‖T-Tᵀ‖/‖T‖=0.013, one-cycle formula Im γ± = ±0.002)
+   adiabatic prediction (N=12): 0.991
+   ideal Jones cascade (N=12):  0.991
+   full-RCWA stack N=12, gap 0.25/SiO2 0.5: 0.879
+   full-RCWA stack N=12, gap 0.4/SiO2 0.3: 1.061
+   lateral supercell N=6, orders (36, 6): 0.7143
+   lateral supercell N=6, orders (48, 6): 0.7084
+
+Saved results/complex_pb_transport_test/transport_test_summary.json
+[15:18:44] cell 15 done
+u=-1 gap 0.27 / SiO2 0.58: ln ratio (dominant) = +0.136 | 61s
+u=-1 gap 0.39 / SiO2 0.42: ln ratio (dominant) = +0.135 | 61s
+u=-1 gap 0.34 / SiO2 0.67: ln ratio (dominant) = +1.128 | 61s
+u=-1 gap 0.56 / SiO2 0.31: ln ratio (dominant) = -0.131 | 61s
+u=-1 gap 0.46 / SiO2 0.38: ln ratio (dominant) = -1.285 | 61s
+u=-1 gap 0.59 / SiO2 0.75: ln ratio (dominant) = +0.264 | 61s
+u=-1 gap 0.45 / SiO2 0.65: ln ratio (dominant) = +0.221 | 61s
+u=-1 gap 0.41 / SiO2 0.70: ln ratio (dominant) = +0.297 | 61s
+u=+1 gap 0.27 / SiO2 0.58: ln ratio (dominant) = +0.029 | 62s
+u=+1 gap 0.39 / SiO2 0.42: ln ratio (dominant) = -0.275 | 62s
+u=+1 gap 0.34 / SiO2 0.67: ln ratio (dominant) = -0.009 | 62s
+u=+1 gap 0.56 / SiO2 0.31: ln ratio (dominant) = -0.048 | 62s
+u=+1 gap 0.46 / SiO2 0.38: ln ratio (dominant) = -0.046 | 62s
+u=+1 gap 0.59 / SiO2 0.75: ln ratio (dominant) = +0.018 | 62s
+u=+1 gap 0.45 / SiO2 0.65: ln ratio (dominant) = +0.039 | 62s
+u=+1 gap 0.41 / SiO2 0.70: ln ratio (dominant) = +0.062 | 62s
+
+median ln ratio: u=-1 +0.178 (IQR +0.069..+0.272), u=+1 +0.004 (IQR -0.046..+0.032)
+geometric signal (u=-1 minus control) = +0.174  vs  prediction 2 Im γ = 0.485
+[15:35:09] cell 17 done
+u=-1 12 cells (15°/cell): zero-order |a(+)|/|a(-)| = [0.9285 1.0461] | |a(+)| = [0.4323 0.4851] vs local mean [0.4856 0.4868] | 227s
+u=+1 12 cells (15°/cell): zero-order |a(+)|/|a(-)| = [0.7549 1.0084] | |a(+)| = [0.2127 0.2425] vs local mean [0.2193 0.2192] | 225s
+
+Lateral zero-order ratio (dominant branch), 6 cells (30°/cell) vs 12 cells (15°/cell):
+   u=-1: 0.847 -> 0.929
+   u=+1: 0.708 -> 0.755
+[15:42:41] cell 18 done
+[15:42:43] FINISHED OK

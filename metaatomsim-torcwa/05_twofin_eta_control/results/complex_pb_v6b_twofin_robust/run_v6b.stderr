@@ -1,0 +1,215 @@
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Traceback (most recent call last):
+  File "/home/coopah/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/run_notebook.py", line 43, in <module>
+    client.execute()
+    ~~~~~~~~~~~~~~^^
+  File "/home/coopah/anaconda3/envs/Metasurface-Design/lib/python3.14/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/coopah/anaconda3/envs/Metasurface-Design/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/coopah/anaconda3/envs/Metasurface-Design/lib/python3.14/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/home/coopah/anaconda3/envs/Metasurface-Design/lib/python3.14/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/coopah/anaconda3/envs/Metasurface-Design/lib/python3.14/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def adam_run(raw0, opts, steps, lr, label, rng):
+    raw = torch.nn.Parameter(torch.tensor(raw0, device=DEVICE, dtype=device_dtype(opts)))
+    opt = torch.optim.Adam([raw], lr=lr); history = []
+    for it in range(steps):
+        opt.zero_grad(set_to_none=True)
+        try:
+            loss, d = evaluate(raw, opts, jitter_u(rng), rng)
+            if not bool(torch.isfinite(loss)): break
+            loss.backward()
+            if raw.grad is None or not bool(torch.isfinite(raw.grad).all()): break
+            torch.nn.utils.clip_grad_norm_([raw], 1.)
+            rec = dict(iteration=it, loss=float(loss.detach().cpu()), raw=raw.detach().cpu().numpy().tolist(), **scalars(d))
+            history.append(rec); opt.step()
+            if it == 0 or (it+1) % 10 == 0: print(f"{label} {it+1:3}/{steps}: loss={rec['loss']:+.3f} | {fmt(rec)}", flush=True)
+        except (RuntimeError, ValueError) as exc:
+            print(f'{label}: terminated at iteration {it}: {exc}'); break
+    return history
+
+def rescore(stage, history, k=N_RESCORE):
+    pool = sorted([h for h in history if h['valid']], key=lambda h: h['loss'])[:k]
+    if history and all(h['iteration'] != history[-1]['iteration'] for h in pool): pool.append(history[-1])
+    out = []
+    for h in pool:
+        ref = reference_score(h['raw'])
+        out.append(dict(stage=stage, iteration=h['iteration'], train_loss=h['loss'], raw=h['raw'], ref=ref))
+        print(f"   ACCEPT {stage} it {h['iteration']:3}: {fmt(ref)} | accepted={ref['accepted']}", flush=True)
+    return out
+
+checkpoint = OUT/'complex_pb_checkpoint.npz'
+trajectories, rescored, best_raw = [], [], None
+if RUN_OPTIMIZE and start_list:
+    rng = np.random.default_rng(SEED + 1)
+    for i, entry in enumerate(start_list[:N_KEEP]):
+        print(f'\n>>> Candidate {i+1}/{N_KEEP}')
+        c = adam_run(entry['raw'], COARSE, COARSE_STEPS, .03, f'C{i} coarse', rng)
+        best_c = min([h for h in c if h['valid']] or c, key=lambda h: h['loss'])
+        r = adam_run(best_c['raw'], REFINE, REFINE_STEPS, .01, f'C{i} refine', rng)
+        trajectories.append(dict(candidate=i, coarse=c, refine=r))
+        for stage, hist in (('coarse', c), ('refine', r)):
+            rescored += [dict(candidate=i, **row) for row in rescore(stage, hist)]
+    pool = [r for r in rescored if r['ref']['accepted']]
+    if not pool:
+        print('WARNING: nothing passed ACCEPT; using the best ACCEPT loss among valid iterates.')
+        pool = [r for r in rescored if r['ref']['valid']] or rescored
+    winner = min(pool, key=lambda r: r['ref']['loss'])
+    best_raw = np.asarray(winner['raw'], float)
+    print(f"Winner: candidate {winner['candidate']} {winner['stage']} it {winner['iteration']} | {fmt(winner['ref'])}")
+    np.savez_compressed(checkpoint, raw=best_raw,
+        metadata=json.dumps(dict(physics=asdict(PHYS), modulation=asdict(MOD), bounds=BOUNDS, seed=SEED,
+            objective_tag='complex_pb_twofin_robust_v6b', engine=G.__name__, accept_settings=asdict(ACCEPT),
+            weights=dict(W_RE=W_RE, W_LOC=W_LOC, W_P=W_P, FAB=FAB_WEIGHT, P_FLOOR=P_FLOOR),
+            winner={k: v for k, v in winner.items() if k != 'raw'})),
+        rescored=json.dumps(rescored))
+    print('Saved:', checkpoint)
+elif checkpoint.is_file():
+    best_raw = np.load(checkpoint, allow_pickle=False)['raw']; print('Loaded:', checkpoint)
+------------------
+
+----- stdout -----
+
+>>> Candidate 1/3
+----- stdout -----
+C0 coarse   1/50: loss=+0.090 | Im γ span=1.045 rad, Re γ rms=0.255, locality rms=0.480, nonlinearity=0.319, P≥0.07, η∈[0.22,0.40], gap≥1.05
+----- stdout -----
+C0 coarse  10/50: loss=-0.257 | Im γ span=0.314 rad, Re γ rms=0.192, locality rms=0.078, nonlinearity=0.078, P≥0.28, η∈[0.03,0.28], gap≥1.16
+----- stdout -----
+C0 coarse  20/50: loss=-0.406 | Im γ span=0.519 rad, Re γ rms=0.201, locality rms=0.174, nonlinearity=0.106, P≥0.29, η∈[0.01,0.26], gap≥1.20
+----- stdout -----
+C0 coarse  30/50: loss=+0.241 | Im γ span=0.446 rad, Re γ rms=0.220, locality rms=0.554, nonlinearity=0.159, P≥0.30, η∈[0.03,0.18], gap≥1.24
+----- stdout -----
+C0 coarse  40/50: loss=+0.188 | Im γ span=0.607 rad, Re γ rms=0.207, locality rms=0.608, nonlinearity=0.111, P≥0.33, η∈[0.02,0.21], gap≥1.29
+----- stdout -----
+C0 coarse  50/50: loss=+0.580 | Im γ span=0.595 rad, Re γ rms=0.249, locality rms=0.730, nonlinearity=0.215, P≥0.28, η∈[0.12,0.43], gap≥1.10
+----- stdout -----
+C0 refine   1/20: loss=-0.624 | Im γ span=0.799 rad, Re γ rms=0.287, locality rms=0.202, nonlinearity=0.101, P≥0.29, η∈[0.06,0.41], gap≥1.13
+----- stdout -----
+C0 refine  10/20: loss=-0.466 | Im γ span=0.590 rad, Re γ rms=0.203, locality rms=0.131, nonlinearity=0.219, P≥0.35, η∈[0.05,0.27], gap≥1.29
+----- stdout -----
+C0 refine  20/20: loss=-0.241 | Im γ span=0.654 rad, Re γ rms=0.219, locality rms=0.383, nonlinearity=0.227, P≥0.23, η∈[0.08,0.17], gap≥1.28
+----- stdout -----
+   ACCEPT coarse it  45: Im γ span=0.869 rad, Re γ rms=0.236, locality rms=0.372, nonlinearity=0.162, P≥0.30, η∈[0.03,0.46], gap≥1.12 | accepted=False
+----- stdout -----
+   ACCEPT coarse it  30: Im γ span=0.806 rad, Re γ rms=0.250, locality rms=0.390, nonlinearity=0.239, P≥0.26, η∈[0.01,0.50], gap≥1.06 | accepted=False
+----- stdout -----
+   ACCEPT coarse it  49: Im γ span=0.848 rad, Re γ rms=0.221, locality rms=0.479, nonlinearity=0.256, P≥0.31, η∈[0.04,0.37], gap≥1.21 | accepted=False
+----- stdout -----
+   ACCEPT refine it  12: Im γ span=0.708 rad, Re γ rms=0.256, locality rms=0.416, nonlinearity=0.231, P≥0.27, η∈[0.06,0.49], gap≥1.06 | accepted=False
+----- stdout -----
+   ACCEPT refine it  15: Im γ span=0.764 rad, Re γ rms=0.262, locality rms=0.402, nonlinearity=0.241, P≥0.25, η∈[0.07,0.54], gap≥1.00 | accepted=False
+----- stdout -----
+   ACCEPT refine it  19: Im γ span=0.789 rad, Re γ rms=0.261, locality rms=0.403, nonlinearity=0.246, P≥0.25, η∈[0.07,0.56], gap≥0.98 | accepted=False
+----- stdout -----
+
+>>> Candidate 2/3
+----- stdout -----
+C1 coarse   1/50: loss=-0.147 | Im γ span=0.180 rad, Re γ rms=0.065, locality rms=0.119, nonlinearity=0.007, P≥0.30, η∈[0.14,0.29], gap≥0.22
+----- stdout -----
+C1 coarse  10/50: loss=-0.260 | Im γ span=0.398 rad, Re γ rms=0.111, locality rms=0.250, nonlinearity=0.025, P≥0.58, η∈[0.04,0.13], gap≥0.26
+----- stdout -----
+C1 coarse  20/50: loss=-0.358 | Im γ span=0.417 rad, Re γ rms=0.087, locality rms=0.158, nonlinearity=0.035, P≥0.49, η∈[0.08,0.14], gap≥0.21
+----- stdout -----
+C1 coarse  30/50: loss=-0.614 | Im γ span=0.665 rad, Re γ rms=0.079, locality rms=0.148, nonlinearity=0.037, P≥0.48, η∈[0.07,0.16], gap≥0.21
+----- stdout -----
+C1 coarse  40/50: loss=-0.859 | Im γ span=1.180 rad, Re γ rms=0.085, locality rms=0.394, nonlinearity=0.063, P≥0.59, η∈[0.06,0.59], gap≥0.07
+----- stdout -----
+C1 coarse  50/50: loss=+0.361 | Im γ span=0.705 rad, Re γ rms=0.317, locality rms=0.683, nonlinearity=0.178, P≥0.51, η∈[0.13,0.30], gap≥0.06
+----- stdout -----
+C1 refine   1/20: loss=-0.461 | Im γ span=0.758 rad, Re γ rms=0.109, locality rms=0.377, nonlinearity=0.017, P≥0.58, η∈[0.08,0.20], gap≥0.12
+----- stdout -----
+C1 refine  10/20: loss=-0.779 | Im γ span=0.955 rad, Re γ rms=0.064, locality rms=0.293, nonlinearity=0.018, P≥0.56, η∈[0.07,0.22], gap≥0.12
+----- stdout -----
+C1 refine  20/20: loss=-0.666 | Im γ span=0.986 rad, Re γ rms=0.093, locality rms=0.394, nonlinearity=0.019, P≥0.55, η∈[0.06,0.20], gap≥0.12
+----- stdout -----
+   ACCEPT coarse it  39: Im γ span=1.420 rad, Re γ rms=0.184, locality rms=0.609, nonlinearity=0.089, P≥0.55, η∈[0.07,0.62], gap≥0.06 | accepted=False
+----- stdout -----
+   ACCEPT coarse it  40: Im γ span=1.038 rad, Re γ rms=0.346, locality rms=0.597, nonlinearity=0.066, P≥0.56, η∈[0.06,0.55], gap≥0.06 | accepted=False
+----- stdout -----
+   ACCEPT coarse it  49: Im γ span=0.823 rad, Re γ rms=0.359, locality rms=0.748, nonlinearity=0.176, P≥0.50, η∈[0.08,0.35], gap≥0.06 | accepted=False
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyboardInterrupt[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 40[39m
+[32m     36[39m         best_c = min([h [38;5;28;01mfor[39;00m h [38;5;28;01min[39;00m c [38;5;28;01mif[39;00m h[[33m'valid'[39m]] [38;5;28;01mor[39;00m c, key=[38;5;28;01mlambda[39;00m h: h[[33m'loss'[39m])
+[32m     37[39m         r = adam_run(best_c[[33m'raw'[39m], REFINE, REFINE_STEPS, [32m.01[39m, f'C{i} refine', rng)
+[32m     38[39m         trajectories.append(dict(candidate=i, coarse=c, refine=r))
+[32m     39[39m         [38;5;28;01mfor[39;00m stage, hist [38;5;28;01min[39;00m (([33m'coarse'[39m, c), ([33m'refine'[39m, r)):
+[32m---> [39m[32m40[39m             rescored += [dict(candidate=i, **row) [38;5;28;01mfor[39;00m row [38;5;28;01min[39;00m rescore(stage, hist)]
+[32m     41[39m     pool = [r [38;5;28;01mfor[39;00m r [38;5;28;01min[39;00m rescored [38;5;28;01mif[39;00m r[[33m'ref'[39m][[33m'accepted'[39m]]
+[32m     42[39m     [38;5;28;01mif[39;00m [38;5;28;01mnot[39;00m pool:
+[32m     43[39m         print([33m'WARNING: nothing passed ACCEPT; using the best ACCEPT loss among valid iterates.'[39m)
+
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 24[39m, in [36mrescore[39m[34m(stage, history, k)[39m
+[32m     20[39m     pool = sorted([h [38;5;28;01mfor[39;00m h [38;5;28;01min[39;00m history [38;5;28;01mif[39;00m h[[33m'valid'[39m]], key=[38;5;28;01mlambda[39;00m h: h[[33m'loss'[39m])[:k]
+[32m     21[39m     [38;5;28;01mif[39;00m history [38;5;28;01mand[39;00m all(h[[33m'iteration'[39m] != history[-[32m1[39m][[33m'iteration'[39m] [38;5;28;01mfor[39;00m h [38;5;28;01min[39;00m pool): pool.append(history[-[32m1[39m])
+[32m     22[39m     out = []
+[32m     23[39m     [38;5;28;01mfor[39;00m h [38;5;28;01min[39;00m pool:
+[32m---> [39m[32m24[39m         ref = reference_score(h[[33m'raw'[39m])
+[32m     25[39m         out.append(dict(stage=stage, iteration=h[[33m'iteration'[39m], train_loss=h[[33m'loss'[39m], raw=h[[33m'raw'[39m], ref=ref))
+[32m     26[39m         print(f"   ACCEPT {stage} it {h[[33m'iteration'[39m]:3}: {fmt(ref)} | accepted={ref[[33m'accepted'[39m]}", flush=[38;5;28;01mTrue[39;00m)
+[32m     27[39m     [38;5;28;01mreturn[39;00m out
+
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 51[39m, in [36mreference_score[39m[34m(raw)[39m
+[32m     48[39m [38;5;28;01mdef[39;00m reference_score(raw):
+[32m     49[39m     [38;5;28;01mwith[39;00m torch.no_grad():
+[32m     50[39m         r = torch.as_tensor(np.asarray(raw), device=DEVICE, dtype=device_dtype(ACCEPT))
+[32m---> [39m[32m51[39m         loss, d = evaluate(r, ACCEPT, ACCEPT_U)
+[32m     52[39m     out = dict(loss=float(loss.cpu()), **scalars(d))
+[32m     53[39m     out['accepted'] = (bool(out['valid']) and out['P_min'] >= MIN_P_ACCEPT and out['gap_min'] >= MIN_GAP_ACCEPT
+[32m     54[39m                        [38;5;28;01mand[39;00m out[[33m'loc_rms'[39m] <= MAX_LOC_ACCEPT)
+
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 22[39m, in [36mevaluate[39m[34m(raw, opts, us, rng)[39m
+[32m     18[39m             probes = [(t, s, [38;5;28;01mFalse[39;00m) [38;5;28;01mfor[39;00m t, s [38;5;28;01min[39;00m ACCEPT_PROBES]
+[32m     19[39m         [38;5;28;01mfor[39;00m theta, scale, noisy [38;5;28;01min[39;00m probes:
+[32m     20[39m             qq = {key: (v + FAB_SD*(BOUNDS[key][1]-BOUNDS[key][0])*float(rng.normal()) if noisy else v)
+[32m     21[39m                   [38;5;28;01mfor[39;00m key, v [38;5;28;01min[39;00m q.items()}
+[32m---> [39m[32m22[39m             Tp = solve_torch(qq, replace(PHYS, period=PHYS.period*scale), opts, theta_deg=theta)[[32m2[39m:[32m4[39m, :[32m2[39m]
+[32m     23[39m             dev.append((pauli_khat(Tp)[[32m1[39m] - k).abs().square())
+[32m     24[39m     k0 = torch.stack(k0); im, re = k0.imag, k0.real
+[32m     25[39m     span = im.max() - im.min()
+
+[36mFile [39m[32m~/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/engine_twofin_eta.py:294[39m, in [36msolve_torch[39m[34m(p, physics, opts, theta_deg, hard)[39m
+[32m    290[39m fill=twofin_mask(p,physics,opts.raster,theta_deg,opts.edge_um,hard=hard,
+[32m    291[39m                  mode=opts.mask)
+[32m    292[39m normals=(twofin_normals(p,physics,opts.raster,theta_deg)
+[32m    293[39m          [38;5;28;01mif[39;00m opts.factorization==[33m'[39m[33mnv[39m[33m'[39m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m)
+[32m--> [39m[32m294[39m [38;5;28;01mreturn[39;00m [30;43mrcwa_from_mask[39;49m[30;43m([39;49m[30;43mfill[39;49m[30;43m,[39;49m[30;43mphysics[39;49m[30;43m,[39;49m[30;43mopts[39;49m[30;43m,[39;49m[30;43mnormals[39;49m[30;43m=[39;49m[30;43mnormals[39;49m[30;43m)[39;49m[[32m1[39m]
+
+[36mFile [39m[32m~/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/engine_twofin_eta.py:285[39m, in [36mrcwa_from_mask[39m[34m(fill, physics, opts, period, normals)[39m
+[32m    283[39m [38;5;28;01melse[39;00m:sim.add_layer(thickness=physics.height,eps=eps)
+[32m    284[39m sim.solve_global_smatrix()
+[32m--> [39m[32m285[39m [38;5;28;01mreturn[39;00m sim,[30;43m_s_matrix[39;49m[30;43m([39;49m[30;43msim[39;49m[30;43m,[39;49m[30;43mfill[39;49m[30;43m.[39;49m[30;43mdevice[39;49m[30;43m,[39;49m[30;43mdtype[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/engine_twofin_eta.py:197[39m, in [36m_s_matrix[39m[34m(sim, device, dtype, order_out)[39m
+[32m    195[39m     port=[33m'[39m[33mreflection[39m[33m'[39m [38;5;28;01mif[39;00m incoming==outgoing [38;5;28;01melse[39;00m [33m'[39m[33mtransmission[39m[33m'[39m
+[32m    196[39m     [38;5;28;01mfor[39;00m ipol [38;5;129;01min[39;00m [33m'[39m[33mxy[39m[33m'[39m:
+[32m--> [39m[32m197[39m         z=[30;43msim[39;49m[30;43m.[39;49m[30;43mS_parameters[39;49m[30;43m([39;49m[30;43morders[39;49m[30;43m=[39;49m[30;43mlist[39;49m[30;43m([39;49m[30;43morder_out[39;49m[30;43m)[39;49m[30;43m,[39;49m[30;43mdirection[39;49m[30;43m=[39;49m[30;43mdirection[39;49m[30;43m,[39;49m[30;43mport[39;49m[30;43m=[39;49m[30;43mport[39;49m[30;43m,[39;49m
+[32m    198[39m [30;43m                         [39;49m[30;43mpolarization[39;49m[30;43m=[39;49m[30;43mopol[39;49m[30;43m+[39;49m[30;43mipol[39;49m[30;43m,[39;49m[30;43mref_order[39;49m[30;43m=[39;49m[30;43m[[39;49m[30;43m0[39;49m[30;43m,[39;49m[30;43m0[39;49m[30;43m][39;49m[30;43m,[39;49m[30;43mpower_norm[39;49m[30;43m=[39;49m[30;43;01mTrue[39;49;00m[30;43m)[39;49m
+[32m    199[39m         vals.append(z.reshape(-[32m1[39m)[[32m0[39m])
+[32m    200[39m rows.append(torch.stack(vals))
+
+[36mFile [39m[32m~/anaconda3/envs/Metasurface-Design/lib/python3.14/site-packages/torcwa/rcwa.py:318[39m, in [36mrcwa.S_parameters[39m[34m(self, orders, direction, port, polarization, ref_order, power_norm, evanscent)[39m
+[32m    300[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mS_parameters[39m([38;5;28mself[39m,orders,*,direction=[33m'[39m[33mforward[39m[33m'[39m,port=[33m'[39m[33mtransmission[39m[33m'[39m,polarization=[33m'[39m[33mxx[39m[33m'[39m,ref_order=[[32m0[39m,[32m0[39m],power_norm=[38;5;28;01mTrue[39;00m,evanscent=[32m1e-3[39m):
+[32m    301[39m [38;5;250m    [39m[33;03m'''[39;00m
+[32m    302[39m [33;03m        Return S-parameters.[39;00m
+[32m    303[39m 
+[32m   (...)[39m[32m    315[39m [33;03m        - S-parameters (torch.Tensor)[39;00m
+[32m    316[39m [33;03m    '''[39;00m
+[32m--> [39m[32m318[39m     orders = [30;43mtorch[39;49m[30;43m.[39;49m[30;43mas_tensor[39;49m[30;43m([39;49m[30;43morders[39;49m[30;43m,[39;49m[30;43mdtype[39;49m[30;43m=[39;49m[30;43mtorch[39;49m[30;43m.[39;49m[30;43mint64[39;49m[30;43m,[39;49m[30;43mdevice[39;49m[30;43m=[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_device[39;49m[30;43m)[39;49m.reshape([-[32m1[39m,[32m2[39m])
+[32m    320[39m     [38;5;28;01mif[39;00m direction [38;5;129;01min[39;00m [[33m'[39m[33mf[39m[33m'[39m, [33m'[39m[33mforward[39m[33m'[39m]:
+[32m    321[39m         direction = [33m'[39m[33mforward[39m[33m'[39m
+
+[31mKeyboardInterrupt[39m: 
+

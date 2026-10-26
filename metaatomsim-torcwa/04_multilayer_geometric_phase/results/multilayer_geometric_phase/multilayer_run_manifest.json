@@ -1,0 +1,60 @@
+{
+  "checkpoint": "results/elliptical_contour_transmission_ep/contour_transport_7de41184180b129f.npz",
+  "checkpoint_sha256_16": "a27c8b052d18da79",
+  "N_sweep": [
+    6,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "height_um": 0.633,
+  "wavelength_um": 0.633,
+  "n_fin": 2.584,
+  "model_kind": "ellipse",
+  "periodic_options": {
+    "order": 7,
+    "pixels_per_cell": 96,
+    "device": "cuda",
+    "precision": "complex128",
+    "diffraction_budget": true
+  },
+  "supercell_options": {
+    "order": 5,
+    "pixels_per_cell": 72,
+    "device": "cuda",
+    "precision": "complex128",
+    "diffraction_budget": true
+  },
+  "pattern": {
+    "nx": 2,
+    "ny": 2,
+    "qx": 1,
+    "qy": 0
+  },
+  "finite_options": {
+    "nx": 3,
+    "ny": 3,
+    "resolution": 160,
+    "pml_um": 0.3,
+    "lateral_pad_um": 0.35,
+    "z_pad_wavelengths": 1.2,
+    "decay_after": 120.0,
+    "pulse_width_freq": 0.12,
+    "n_profile_points": 256
+  },
+  "embedding": {
+    "background": 1.0,
+    "bottom": 1.46,
+    "top": 1.0
+  },
+  "generator_failures": {},
+  "caveats": [
+    "Isolated-Jones Wilson is a CONTROL, not the local propagation generator",
+    "Projected two-way K4 is a model proxy; lacks evanescent interlayer channels",
+    "Unrotated/reversed odd phase is a signature, not exact separation",
+    "Fano fit is phenomenological; resonant and background amplitudes add",
+    "Finite Meep matrices are aperture-projected relative transmission"
+  ]
+}

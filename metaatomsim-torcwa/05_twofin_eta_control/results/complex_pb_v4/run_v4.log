@@ -1,0 +1,131 @@
+[22:00:31] start SingleLayer_ComplexPB_v4.ipynb
+Device: cuda | u = Modulation(parameter='junction_frac', amplitude=0.1) 
+ {'wavelength': 0.633, 'period': 0.4, 'n_fin': 3.88, 'k_fin': 0.019, 'n_background': 1.0, 'n_bottom': 1.46, 'n_top': 1.0, 'height': 0.495, 'cell_margin': 0.012}
+bottom         n=1.460 first order propagating=False
+top            n=1.000 first order propagating=False
+background     n=1.000 first order propagating=False
+fin_reference  n=3.880 first order propagating=True
+[22:00:34] cell 1 done
+[22:00:34] cell 3 done
+Screen 8/64 | valid 5
+Screen 16/64 | valid 11
+Screen 24/64 | valid 14
+Screen 32/64 | valid 19
+Screen 40/64 | valid 22
+Screen 48/64 | valid 27
+Screen 56/64 | valid 31
+Screen 64/64 | valid 36
+Screen seconds: 584.5
+score -0.645 | Im γ span=0.707 rad, Re γ rms=0.165, locality rms=0.132, P≥0.49, η∈[0.08,0.31], gap≥0.07
+score -0.504 | Im γ span=1.262 rad, Re γ rms=0.262, locality rms=0.332, P≥0.07, η∈[0.23,0.47], gap≥1.03
+score -0.154 | Im γ span=0.164 rad, Re γ rms=0.067, locality rms=0.051, P≥0.30, η∈[0.14,0.30], gap≥0.18
+score -0.122 | Im γ span=0.163 rad, Re γ rms=0.058, locality rms=0.062, P≥0.24, η∈[0.03,0.09], gap≥0.31
+score -0.106 | Im γ span=0.112 rad, Re γ rms=0.043, locality rms=0.042, P≥0.29, η∈[0.02,0.07], gap≥0.86
+score -0.089 | Im γ span=0.121 rad, Re γ rms=0.069, locality rms=0.116, P≥0.32, η∈[0.10,0.22], gap≥0.98
+[22:10:18] cell 5 done
+
+>>> Candidate 1/3
+C0 coarse   1/50: loss=-0.622 | Im γ span=0.682 rad, Re γ rms=0.165, locality rms=0.128, P≥0.50, η∈[0.09,0.31], gap≥0.07
+C0 coarse  10/50: loss=-0.401 | Im γ span=0.699 rad, Re γ rms=0.478, locality rms=0.185, P≥0.47, η∈[0.14,0.38], gap≥0.07
+C0 coarse  20/50: loss=-0.639 | Im γ span=0.879 rad, Re γ rms=0.353, locality rms=0.240, P≥0.39, η∈[0.30,0.49], gap≥0.10
+C0 coarse  30/50: loss=+0.453 | Im γ span=1.362 rad, Re γ rms=0.341, locality rms=0.921, P≥0.36, η∈[0.28,0.57], gap≥0.12
+C0 coarse  40/50: loss=-1.780 | Im γ span=1.855 rad, Re γ rms=0.018, locality rms=0.193, P≥0.36, η∈[0.21,0.56], gap≥0.11
+C0 coarse  50/50: loss=-0.743 | Im γ span=0.768 rad, Re γ rms=0.053, locality rms=0.106, P≥0.43, η∈[0.08,0.29], gap≥0.10
+C0 refine   1/20: loss=+1.801 | Im γ span=1.092 rad, Re γ rms=0.103, locality rms=1.200, P≥0.36, η∈[0.19,0.61], gap≥0.10
+C0 refine  10/20: loss=-0.552 | Im γ span=0.629 rad, Re γ rms=0.085, locality rms=0.187, P≥0.37, η∈[0.20,0.42], gap≥0.15
+C0 refine  20/20: loss=-0.763 | Im γ span=0.881 rad, Re γ rms=0.042, locality rms=0.241, P≥0.36, η∈[0.20,0.54], gap≥0.12
+   ACCEPT coarse it  40: Im γ span=2.385 rad, Re γ rms=0.267, locality rms=0.332, P≥0.35, η∈[0.18,0.70], gap≥0.07 | accepted=False
+   ACCEPT coarse it  39: Im γ span=1.590 rad, Re γ rms=0.299, locality rms=0.497, P≥0.36, η∈[0.19,0.50], gap≥0.10 | accepted=False
+   ACCEPT coarse it  49: Im γ span=1.300 rad, Re γ rms=0.192, locality rms=0.290, P≥0.41, η∈[0.07,0.42], gap≥0.05 | accepted=False
+   ACCEPT refine it  16: Im γ span=0.992 rad, Re γ rms=0.216, locality rms=0.964, P≥0.36, η∈[0.21,0.62], gap≥0.09 | accepted=False
+   ACCEPT refine it   6: Im γ span=0.887 rad, Re γ rms=0.217, locality rms=0.299, P≥0.36, η∈[0.16,0.34], gap≥0.14 | accepted=False
+   ACCEPT refine it  19: Im γ span=1.406 rad, Re γ rms=0.199, locality rms=1.177, P≥0.35, η∈[0.19,0.69], gap≥0.08 | accepted=False
+
+>>> Candidate 2/3
+C1 coarse   1/50: loss=-0.651 | Im γ span=1.506 rad, Re γ rms=0.231, locality rms=0.371, P≥0.08, η∈[0.13,0.51], gap≥0.98
+C1 coarse  10/50: loss=-0.450 | Im γ span=0.545 rad, Re γ rms=0.251, locality rms=0.126, P≥0.29, η∈[0.02,0.15], gap≥1.17
+C1 coarse  20/50: loss=-0.278 | Im γ span=0.336 rad, Re γ rms=0.167, locality rms=0.122, P≥0.33, η∈[0.03,0.09], gap≥1.25
+C1 coarse  30/50: loss=-0.361 | Im γ span=0.477 rad, Re γ rms=0.243, locality rms=0.168, P≥0.30, η∈[0.03,0.24], gap≥1.22
+C1 coarse  40/50: loss=-0.152 | Im γ span=0.817 rad, Re γ rms=0.228, locality rms=0.553, P≥0.29, η∈[0.05,0.42], gap≥1.16
+C1 coarse  50/50: loss=-0.678 | Im γ span=0.748 rad, Re γ rms=0.204, locality rms=0.119, P≥0.29, η∈[0.06,0.41], gap≥1.16
+C1 refine   1/20: loss=+0.237 | Im γ span=0.520 rad, Re γ rms=0.261, locality rms=0.585, P≥0.27, η∈[0.05,0.39], gap≥1.11
+C1 refine  10/20: loss=-0.031 | Im γ span=0.804 rad, Re γ rms=0.270, locality rms=0.579, P≥0.23, η∈[0.07,0.53], gap≥0.99
+C1 refine  20/20: loss=+0.177 | Im γ span=0.541 rad, Re γ rms=0.277, locality rms=0.565, P≥0.28, η∈[0.07,0.30], gap≥1.18
+   ACCEPT coarse it  48: Im γ span=0.971 rad, Re γ rms=0.282, locality rms=0.182, P≥0.25, η∈[0.06,0.58], gap≥0.95 | accepted=False
+   ACCEPT coarse it  43: Im γ span=0.924 rad, Re γ rms=0.267, locality rms=0.176, P≥0.26, η∈[0.06,0.53], gap≥1.02 | accepted=False
+   ACCEPT coarse it  49: Im γ span=0.973 rad, Re γ rms=0.287, locality rms=0.183, P≥0.25, η∈[0.06,0.58], gap≥0.94 | accepted=False
+   ACCEPT refine it   4: Im γ span=0.927 rad, Re γ rms=0.259, locality rms=0.180, P≥0.25, η∈[0.06,0.54], gap≥1.00 | accepted=False
+   ACCEPT refine it   7: Im γ span=0.856 rad, Re γ rms=0.257, locality rms=0.174, P≥0.21, η∈[0.07,0.48], gap≥1.09 | accepted=False
+   ACCEPT refine it  19: Im γ span=0.954 rad, Re γ rms=0.291, locality rms=0.187, P≥0.26, η∈[0.04,0.57], gap≥0.94 | accepted=False
+
+>>> Candidate 3/3
+C2 coarse   1/50: loss=-0.157 | Im γ span=0.164 rad, Re γ rms=0.054, locality rms=0.044, P≥0.30, η∈[0.15,0.29], gap≥0.21
+C2 coarse  10/50: loss=-0.430 | Im γ span=0.468 rad, Re γ rms=0.084, locality rms=0.124, P≥0.59, η∈[0.09,0.34], gap≥0.08
+C2 coarse  20/50: loss=-0.922 | Im γ span=1.081 rad, Re γ rms=0.163, locality rms=0.257, P≥0.55, η∈[0.05,0.59], gap≥0.05
+C2 coarse  30/50: loss=-0.859 | Im γ span=0.931 rad, Re γ rms=0.238, locality rms=0.087, P≥0.58, η∈[0.11,0.38], gap≥0.05
+C2 coarse  40/50: loss=-0.747 | Im γ span=0.772 rad, Re γ rms=0.086, locality rms=0.093, P≥0.60, η∈[0.03,0.20], gap≥0.10
+C2 coarse  50/50: loss=-0.714 | Im γ span=0.822 rad, Re γ rms=0.296, locality rms=0.101, P≥0.56, η∈[0.05,0.28], gap≥0.06
+C2 refine   1/20: loss=+0.923 | Im γ span=1.252 rad, Re γ rms=0.353, locality rms=1.013, P≥0.57, η∈[0.04,0.57], gap≥0.05
+C2 refine  10/20: loss=-0.600 | Im γ span=0.744 rad, Re γ rms=0.120, locality rms=0.255, P≥0.59, η∈[0.13,0.35], gap≥0.08
+C2 refine  20/20: loss=-0.002 | Im γ span=0.598 rad, Re γ rms=0.466, locality rms=0.435, P≥0.53, η∈[0.06,0.29], gap≥0.05
+   ACCEPT coarse it  21: Im γ span=2.194 rad, Re γ rms=0.147, locality rms=0.870, P≥0.58, η∈[0.04,0.75], gap≥0.03 | accepted=False
+   ACCEPT coarse it  37: Im γ span=1.044 rad, Re γ rms=0.474, locality rms=0.497, P≥0.55, η∈[0.09,0.36], gap≥0.05 | accepted=False
+   ACCEPT coarse it  49: Im γ span=0.694 rad, Re γ rms=0.427, locality rms=0.449, P≥0.53, η∈[0.06,0.23], gap≥0.05 | accepted=False
+   ACCEPT refine it   6: Im γ span=0.873 rad, Re γ rms=0.110, locality rms=0.419, P≥0.60, η∈[0.08,0.50], gap≥0.06 | accepted=False
+   ACCEPT refine it   7: Im γ span=0.977 rad, Re γ rms=0.109, locality rms=0.473, P≥0.59, η∈[0.09,0.62], gap≥0.05 | accepted=False
+   ACCEPT refine it  19: Im γ span=1.049 rad, Re γ rms=0.410, locality rms=0.434, P≥0.53, η∈[0.06,0.43], gap≥0.05 | accepted=False
+WARNING: nothing passed ACCEPT; using the best ACCEPT loss among valid iterates.
+Winner: candidate 0 coarse it 40 | Im γ span=2.385 rad, Re γ rms=0.267, locality rms=0.332, P≥0.35, η∈[0.18,0.70], gap≥0.07
+Saved: results/complex_pb_v4/complex_pb_checkpoint_v4.npz
+[00:00:37] cell 6 done
+Geometry: {'length1': 0.1741, 'width1': 0.0781, 'length2': 0.2017, 'width2': 0.0624, 'bend_deg': 75.0436, 'junction_frac': -0.0406} | connected: True
+S (bottom x/y, top x/y):
+ [[-0.1867+0.1945j -0.3252-0.2439j  0.2371-0.6015j  0.0407-0.1131j]
+ [-0.3252-0.2439j -0.2203+0.1982j  0.0349-0.1529j  0.2765-0.55j  ]
+ [ 0.2371-0.6015j  0.0349-0.1529j -0.3934+0.003j  -0.0181-0.3216j]
+ [ 0.0407-0.1131j  0.2765-0.55j   -0.0181-0.3216j -0.4132-0.1013j]]
+k̂ = [1.0147+0.0193j 0.0581+0.1359j 0.1458-0.1883j] | γ+ = 2.9591-0.4270j, γ- = 3.3241+0.4270j
+‖T-Tᵀ‖/‖T‖ = 6.230e-02 | reciprocity ‖S-Sᵀ‖ = 2.6e-12
+x from substrate: T=0.432 R=0.238 absorbed=0.330
+y from substrate: T=0.404 R=0.253 absorbed=0.343
+Layout: {'svg': 'results/complex_pb_v4/complex_pb_mask.svg', 'gds': 'results/complex_pb_v4/complex_pb_mask.gds'}
+[00:00:43] cell 8 done
+order  8: k_y(u=-1,0,1) = +0.0465+0.0551i, +0.0962+0.1317i, +0.1528-0.5782i
+order 10: k_y(u=-1,0,1) = +0.0360+0.0509i, +0.0606+0.1321i, +0.3348-0.5155i
+order 12: k_y(u=-1,0,1) = +0.0360+0.0510i, +0.0581+0.1359i, +0.2906-0.4645i
+order 14: k_y(u=-1,0,1) = +0.0361+0.0500i, +0.0660+0.1322i, +0.2325-0.5510i
+order 16: k_y(u=-1,0,1) = +0.0357+0.0508i, +0.0677+0.1344i, +0.2484-0.5718i
+raster 192: k_y(u=-1,0,1) = +0.0331+0.0505i, +0.0450+0.1403i, +0.2820-0.3713i
+raster 256: k_y(u=-1,0,1) = +0.0360+0.0510i, +0.0581+0.1359i, +0.2906-0.4645i
+raster 384: k_y(u=-1,0,1) = +0.0315+0.0501i, +0.0507+0.1360i, +0.3224-0.4411i
+[00:03:51] cell 10 done
+Im γ span 2.848 rad | Re γ span 1.068 rad | P min 0.35
+[00:05:23] cell 12 done
+u=-1: Im γ over θ: mean -0.165, spread 0.094 rad
+u=+0: Im γ over θ: mean -0.470, spread 0.143 rad
+u=+1: Im γ over θ: mean +0.858, spread 0.588 rad
+Period sweep (geometry fixed), k_y at u=0:
+  period 360 nm: Im γ = +0.156, Re γ = 3.212, P = 0.33
+  period 380 nm: Im γ = +0.175, Re γ = 3.304, P = 0.35
+  period 400 nm: Im γ = -0.427, Re γ = 2.988, P = 0.42
+  period 420 nm: Im γ = -0.042, Re γ = 2.889, P = 0.37
+  period 440 nm: Im γ = -0.185, Re γ = 2.627, P = 0.37
+[00:06:41] cell 14 done
+u=-1 N=32: Wilson γ = [-3.032+0.009j  3.029-0.32j ] | formula γ± = 3.040-0.157j, 3.243+0.157j
+u=-1 N=64: Wilson γ = [-3.031+0.086j  3.03 -0.242j] | formula γ± = 3.040-0.157j, 3.243+0.157j
+u=+0 N=32: Wilson γ = [-3.056+0.319j  3.057-0.636j] | formula γ± = 2.988-0.427j, 3.295+0.427j
+u=+0 N=64: Wilson γ = [-3.058+0.396j  3.058-0.555j] | formula γ± = 2.988-0.427j, 3.295+0.427j
+u=+1 N=32: Wilson γ = [ 2.036+0.698j -1.987-0.971j] | formula γ± = 1.948+1.207j, 4.335-1.207j
+u=+1 N=64: Wilson γ = [ 2.027+0.758j -2.007-0.888j] | formula γ± = 1.948+1.207j, 4.335-1.207j
+[00:18:16] cell 16 done
+length1       dImγ/dp =   -39.267   dReγ/dp =   -26.655   (per µm, per degree, or per unit fraction)
+width1        dImγ/dp =   -74.398   dReγ/dp =   -24.599   (per µm, per degree, or per unit fraction)
+length2       dImγ/dp =    +5.421   dReγ/dp =   +13.521   (per µm, per degree, or per unit fraction)
+width2        dImγ/dp =   -52.392   dReγ/dp =   -32.678   (per µm, per degree, or per unit fraction)
+bend_deg      dImγ/dp =    -0.012   dReγ/dp =    -0.013   (per µm, per degree, or per unit fraction)
+junction_frac dImγ/dp =    -4.283   dReγ/dp =    -0.667   (per µm, per degree, or per unit fraction)
+Im γ span under fabrication perturbations: [0.014 0.131 0.249 0.254 1.192 0.096 0.54  0.028]
+[00:19:43] cell 18 done
+Saved under /home/coopah/Desktop/python-projects/Metasurface-Design/metaatomsim-torcwa/05_twofin_eta_control/results/complex_pb_v4
+[00:19:43] cell 20 done
+[00:19:45] FINISHED OK
